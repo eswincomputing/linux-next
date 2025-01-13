@@ -539,16 +539,24 @@ bool dc_stream_forward_crc_window(struct dc_stream_state *stream,
 		struct rect *rect,
 		uint8_t phy_id,
 		bool is_stop);
+
+bool dc_stream_forward_multiple_crc_window(struct dc_stream_state *stream,
+		struct crc_window *window,
+		uint8_t phy_id,
+		bool stop);
 #endif
 
 bool dc_stream_configure_crc(struct dc *dc,
 			     struct dc_stream_state *stream,
 			     struct crc_params *crc_window,
 			     bool enable,
-			     bool continuous);
+			     bool continuous,
+			     uint8_t idx,
+			     bool reset);
 
 bool dc_stream_get_crc(struct dc *dc,
 		       struct dc_stream_state *stream,
+		       uint8_t idx,
 		       uint32_t *r_cr,
 		       uint32_t *g_y,
 		       uint32_t *b_cb);
